@@ -1,0 +1,131 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background-color: #080F19;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: #080F19;
+    color: #e2e8f0;
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: rgba(6, 182, 212, 0.3);
+    color: #38bdf8;
+  }
+}
+
+/* Custom Circuit & Engineering Animations */
+@keyframes circuitPulse1 {
+  0% {
+    stroke-dashoffset: 500;
+    opacity: 0.2;
+  }
+  40%, 60% {
+    opacity: 0.85;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0.2;
+  }
+}
+
+@keyframes circuitPulse2 {
+  0% {
+    stroke-dashoffset: 600;
+    opacity: 0.15;
+  }
+  50% {
+    opacity: 0.9;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0.15;
+  }
+}
+
+@keyframes circuitPulse3 {
+  0% {
+    stroke-dashoffset: 450;
+    opacity: 0.1;
+  }
+  45%, 55% {
+    opacity: 0.75;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0.1;
+  }
+}
+
+@keyframes waveScroll {
+  0% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: -120;
+  }
+}
+
+@keyframes ledGlow {
+  0%, 100% {
+    opacity: 0.4;
+    filter: drop-shadow(0 0 2px rgba(6, 182, 212, 0.4));
+  }
+  50% {
+    opacity: 1;
+    filter: drop-shadow(0 0 8px rgba(6, 182, 212, 0.9));
+  }
+}
+
+.animate-pulse-trace-1 {
+  animation: circuitPulse1 7s ease-in-out infinite;
+}
+
+.animate-pulse-trace-2 {
+  animation: circuitPulse2 9s ease-in-out infinite 2s;
+}
+
+.animate-pulse-trace-3 {
+  animation: circuitPulse3 8s ease-in-out infinite 4s;
+}
+
+.animate-wave-scroll {
+  animation: waveScroll 3s linear infinite;
+}
+
+.animate-led-glow {
+  animation: ledGlow 2.5s ease-in-out infinite;
+}
+
+/* Accessible prefers-reduced-motion override */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .animate-pulse-trace-1,
+  .animate-pulse-trace-2,
+  .animate-pulse-trace-3,
+  .animate-wave-scroll,
+  .animate-led-glow {
+    animation: none !important;
+    stroke-dashoffset: 0 !important;
+    opacity: 0.4 !important;
+  }
+}
